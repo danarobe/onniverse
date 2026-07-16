@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — 온니버스</title>
+  <meta name="description" content="온니버스 상담 신청. 영업일 기준 1일 내에 회신드립니다.">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">ONNIVERSE<span class="dot">.</span></a>
+    <ul class="nav-menu">
+      <li><a class="nav-link" href="index.html">홈</a></li>
+      <li><a class="nav-link" href="about.html">소개</a></li>
+      <li class="has-dropdown">
+        <a class="nav-link" href="consulting.html">솔루션</a>
+        <ul class="dropdown">
+          <li><a href="consulting.html">컨설팅</a></li>
+          <li><a href="marketing-audit.html">마케팅 점검</a></li>
+          <li><a href="solution-dev.html">솔루션 개발</a></li>
+        </ul>
+      </li>
+      <li><a class="nav-link" href="preview.html">컨설팅 맛보기</a></li>
+      <li><a class="nav-link" href="references.html">레퍼런스</a></li>
+      <li><a class="nav-link" href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary" style="padding:7px 16px;font-size:13px;">상담 신청</a>
+      <a href="https://open.kakao.com/o/gEB5UUCi" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:7px 16px;font-size:13px;">오픈채팅방 입장</a>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="section-eyebrow">Contact</div>
+  <h1>이야기를 들려주세요.</h1>
+  <p>지금 상황을 편하게 적어주시면, 영업일 기준 1일 내에 회신드립니다.<br>상담은 무료이며, 어떤 강요도 없습니다.</p>
+</header>
+
+<section class="section-tight">
+  <div class="contact-info">
+    <div class="card reveal">
+      <div class="card-icon">💬</div>
+      <h3>카카오톡 오픈채팅</h3>
+      <p><a href="https://open.kakao.com/o/gEB5UUCi" target="_blank" rel="noopener" style="color:#0071e3;">오픈채팅방 입장하기 ›</a><br>평일 10:00 – 18:00</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">✉️</div>
+      <h3>이메일</h3>
+      <p>onniverse.official@gmail.com<br>영업일 기준 1일 내 회신</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">📞</div>
+      <h3>전화</h3>
+      <p>02-0000-0000<br>평일 10:00 – 18:00</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="form-box reveal">
+      <form id="contact-form">
+        <div class="form-row">
+          <label for="f-name">이름 *</label>
+          <input type="text" id="f-name" required placeholder="홍길동">
+        </div>
+        <div class="form-row">
+          <label for="f-contact">연락처 *</label>
+          <input type="text" id="f-contact" required placeholder="이메일 또는 휴대폰 번호">
+        </div>
+        <div class="form-row">
+          <label for="f-item">판매 품목 *</label>
+          <input type="text" id="f-item" required placeholder="예) 여성 의류, 건강기능식품, 리빙 소품">
+        </div>
+        <div class="form-row">
+          <label for="f-platform">판매 플랫폼 *</label>
+          <input type="text" id="f-platform" required placeholder="예) 스마트스토어, 쿠팡, 자사몰">
+        </div>
+        <div class="form-row">
+          <label for="f-stage">쇼핑몰 단계 *</label>
+          <select id="f-stage" required>
+            <option value="">선택해 주세요</option>
+            <option>창업 준비 중</option>
+            <option>운영 1년 ~ 3년</option>
+            <option>운영 3년 이상</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="f-revenue">월 매출 구간</label>
+          <input type="text" id="f-revenue" placeholder="예) 월 3,000만 원">
+        </div>
+        <div class="form-row">
+          <label for="f-msg">지금 가장 큰 고민 *</label>
+          <textarea id="f-msg" required placeholder="예) 스마트스토어 운영 8개월 차인데, 광고비를 늘려도 매출이 늘지 않습니다. 셀프 진단 결과는 안정 궤도(60점)였어요."></textarea>
+        </div>
+        <div class="form-row checkbox-row">
+          <input type="checkbox" id="f-privacy" required>
+          <label for="f-privacy" style="font-weight:400; margin:0;">개인정보 수집·이용에 동의합니다. 수집된 정보는 상담 목적으로만 사용되며, 상담 종료 후 파기됩니다.</label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">상담 신청하기</button>
+        <p class="form-note">* 셀프 진단을 먼저 해보셨다면 결과 점수를 함께 적어주세요. 상담이 훨씬 빨라집니다.</p>
+      </form>
+
+      <div id="form-result" style="display:none; text-align:center; padding:20px 0;">
+        <div style="font-size:44px; margin-bottom:16px;">🛰</div>
+        <h3 style="font-size:24px; font-weight:700; margin:0 0 10px;">신청이 접수되었습니다.</h3>
+        <p style="font-size:15px; color:#6e6e73; line-height:1.7;">영업일 기준 1일 내에 남겨주신 연락처로 회신드립니다.<br>그동안 컨설팅 맛보기를 둘러보시는 건 어떨까요?</p>
+        <a href="preview.html" class="btn btn-secondary" style="margin-top:10px;">컨설팅 맛보기 ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">ONNIVERSE<span class="dot">.</span></div>
+      <p>Online Seller's Universe.<br>온라인 셀러의 성장을 우연에 맡기지 않습니다.</p>
+    </div>
+    <div class="footer-col">
+      <h5>솔루션</h5>
+      <ul>
+        <li><a href="consulting.html">컨설팅</a></li>
+        <li><a href="marketing-audit.html">마케팅 점검</a></li>
+        <li><a href="solution-dev.html">솔루션 개발</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>온니버스</h5>
+      <ul>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="preview.html">컨설팅 맛보기</a></li>
+        <li><a href="references.html">레퍼런스</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>문의</h5>
+      <ul>
+        <li><a href="contact.html">상담 신청</a></li>
+        <li><a href="mailto:onniverse.official@gmail.com">onniverse.official@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Onniverse. All rights reserved.</span>
+    <span>온라인 셀러의 모든 궤도, 온니버스</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

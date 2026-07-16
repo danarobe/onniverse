@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컨설팅 맛보기 — 온니버스</title>
+  <meta name="description" content="10문항으로 알아보는 우리 쇼핑몰의 현재 궤도. 온니버스 무료 셀프 진단.">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">ONNIVERSE<span class="dot">.</span></a>
+    <ul class="nav-menu">
+      <li><a class="nav-link" href="index.html">홈</a></li>
+      <li><a class="nav-link" href="about.html">소개</a></li>
+      <li class="has-dropdown">
+        <a class="nav-link" href="consulting.html">솔루션</a>
+        <ul class="dropdown">
+          <li><a href="consulting.html">컨설팅</a></li>
+          <li><a href="marketing-audit.html">마케팅 점검</a></li>
+          <li><a href="solution-dev.html">솔루션 개발</a></li>
+        </ul>
+      </li>
+      <li><a class="nav-link" href="preview.html">컨설팅 맛보기</a></li>
+      <li><a class="nav-link" href="references.html">레퍼런스</a></li>
+      <li><a class="nav-link" href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary" style="padding:7px 16px;font-size:13px;">상담 신청</a>
+      <a href="https://open.kakao.com/o/gEB5UUCi" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:7px 16px;font-size:13px;">오픈채팅방 입장</a>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="section-eyebrow">Free Self-Diagnosis</div>
+  <h1>우리 몰은 지금<br>어느 궤도에 있을까?</h1>
+  <p>지금 단계를 고르면, 단계에 딱 맞는 10개 문항으로 진단합니다.<br>현재 궤도와 가장 먼저 손봐야 할 영역을 알려드립니다. 이메일 입력도 필요 없습니다.</p>
+</header>
+
+<!-- Quiz -->
+<section class="section-tight" id="diagnosis">
+  <div class="wrap">
+    <div class="quiz-box reveal" id="quiz-box">
+      <!-- Audience select stage -->
+      <div id="quiz-audience">
+        <div class="quiz-step-label">START</div>
+        <p class="quiz-q">지금 어떤 단계에 계신가요?</p>
+        <p class="quiz-hint">단계에 따라 진단 문항이 달라집니다.</p>
+        <div class="audience-options">
+          <button data-aud="startup"><b>🚀 창업 준비 중</b><span>아직 판매 전이거나, 시작한 지 얼마 안 된 단계</span></button>
+          <button data-aud="growth"><b>📈 운영 중 — 성장이 필요</b><span>매출이 정체됐거나, 더 키우고 싶은 단계</span></button>
+          <button data-aud="elite"><b>👑 이미 상위권 — 정상이 목표</b><span>상위 10%에서 상위 1%를 노리는 단계</span></button>
+        </div>
+      </div>
+
+      <!-- Quiz stage -->
+      <div id="quiz-stage" style="display:none;">
+        <div class="quiz-progress"><div class="bar" id="quiz-bar"></div></div>
+        <div class="quiz-step-label" id="quiz-step">Q1 / 10</div>
+        <p class="quiz-q" id="quiz-q"></p>
+        <p class="quiz-hint">솔직하게 답할수록 정확한 결과가 나옵니다.</p>
+        <div class="quiz-actions">
+          <button id="quiz-yes">예</button>
+          <button id="quiz-no">아니오</button>
+        </div>
+        <button class="quiz-back" id="quiz-back" style="visibility:hidden;">‹ 이전 문항으로</button>
+      </div>
+
+      <!-- Result stage -->
+      <div class="quiz-result" id="quiz-result" style="display:none;">
+        <div class="result-ring">
+          <svg width="140" height="140" viewBox="0 0 140 140">
+            <circle class="track" cx="70" cy="70" r="60"></circle>
+            <circle class="value" id="result-circle" cx="70" cy="70" r="60"></circle>
+          </svg>
+          <div class="score"><b id="result-score">0</b><span>/ 100점</span></div>
+        </div>
+        <h3 class="result-tier" id="result-tier"></h3>
+        <p class="result-desc" id="result-desc"></p>
+        <div class="result-reco">
+          <h5>온니버스의 추천</h5>
+          <ul id="result-reco-list"></ul>
+        </div>
+        <div class="result-cta">
+          <a href="contact.html" class="btn btn-primary" id="result-cta-btn">상담 신청하기</a>
+          <button class="btn btn-ghost" id="quiz-restart">다시 진단하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sample report -->
+<section class="section section-gray">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Real Consulting Preview</div>
+      <h2>실제 컨설팅에서는<br>이렇게 정리됩니다.</h2>
+      <p>셀프 진단이 방향을 알려준다면, 실제 진단 리포트는 데이터를 열람해 원인과 우선순위까지 짚어줍니다.</p>
+    </div>
+    <div class="mock-report reveal">
+      <div class="mock-head">
+        <div>
+          <div style="font-size:13px; color:#6e6e73;">마케팅 진단 리포트 · 샘플</div>
+          <div style="font-size:19px; font-weight:700; margin-top:4px;">A 쇼핑몰 (여성 패션)</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="mock-score">62<span style="font-size:18px; color:#6e6e73;">/100</span></div>
+          <div style="font-size:12px; color:#6e6e73;">종합 점수</div>
+        </div>
+      </div>
+      <div class="mock-row"><span>광고 계정 구조</span><span class="mock-badge good">양호</span></div>
+      <div class="mock-row"><span>소재 성과</span><span class="mock-badge warn">주의 — 소재 피로도 높음</span></div>
+      <div class="mock-row"><span>타겟 세팅</span><span class="mock-badge good">양호</span></div>
+      <div class="mock-row"><span>랜딩 · 전환율</span><span class="mock-badge bad">위험 — 모바일 이탈 74%</span></div>
+      <div class="mock-row" style="border-bottom:none;"><span>유입 채널 믹스</span><span class="mock-badge warn">주의 — 유료 의존 91%</span></div>
+      <div style="margin-top:20px; padding:16px 18px; background:#f5f5f7; border-radius:12px; font-size:13px; line-height:1.7; color:#1d1d1f;">
+        <strong>개선 우선순위 TOP 1</strong> — 광고를 늘리기 전에 모바일 상세페이지 전환율부터 잡아야 합니다. 현재 구조에서는 광고비 증액이 손실 증가로 이어집니다.
+      </div>
+    </div>
+    <p class="text-center mt-40"><a href="marketing-audit.html" class="link-arrow">마케팅 점검 자세히 보기 ›</a></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="wrap" style="max-width:760px;">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">FAQ</div>
+      <h2>자주 묻는 질문.</h2>
+    </div>
+    <div class="reveal">
+      <div class="accordion-item">
+        <button class="accordion-q">컨설팅 비용은 얼마인가요?<span class="plus">+</span></button>
+        <div class="accordion-a"><div class="accordion-a-inner">스토어 규모와 진행 범위(단건 진단 / 1개월 집중 / 3개월 동행)에 따라 달라집니다. 상담 신청 시 현재 상황을 알려주시면, 미팅 전에 예상 견적 범위를 먼저 안내드립니다. 상담 자체는 무료입니다.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">패션이 아닌 카테고리도 가능한가요?<span class="plus">+</span></button>
+        <div class="accordion-a"><div class="accordion-a-inner">가능합니다. 패션·리빙·식품·뷰티 등 다양한 카테고리를 진행해 왔습니다. 진단 프레임워크(상품·트래픽·전환)는 카테고리와 무관하게 적용되며, 카테고리 특수성은 데이터 열람 단계에서 반영합니다.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">아직 창업 전인데 상담이 의미가 있을까요?<span class="plus">+</span></button>
+        <div class="accordion-a"><div class="accordion-a-inner">창업 전이 오히려 컨설팅 효과가 가장 큰 시기입니다. 아이템 검증과 채널 선택을 데이터로 하고 시작하면, 초기 6개월의 시행착오 비용을 크게 줄일 수 있습니다. 창업 트랙 컨설팅을 참고해 주세요.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">지방 거주인데 비대면으로 진행되나요?<span class="plus">+</span></button>
+        <div class="accordion-a"><div class="accordion-a-inner">모든 과정은 화상 미팅과 온라인 협업 도구로 진행 가능합니다. 실제 진행 고객의 절반 이상이 비대면으로 진행하고 있으며, 대면 미팅을 원하시는 경우 별도 조율이 가능합니다.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">광고 계정을 열어드리는 게 불안합니다.<span class="plus">+</span></button>
+        <div class="accordion-a"><div class="accordion-a-inner">계정 접근은 읽기(분석가) 권한만 요청하며, 진단 종료 후 즉시 권한을 회수하시면 됩니다. 착수 전 비밀유지 조항이 포함된 계약서를 체결하고, 데이터는 리포트 작성 목적 외에 사용하지 않습니다.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">셀프 진단 결과는 저장되나요?<span class="plus">+</span></button>
+        <div class="accordion-a"><div class="accordion-a-inner">아니요. 셀프 진단은 브라우저 안에서만 동작하며 어떤 정보도 서버로 전송하거나 저장하지 않습니다. 결과 화면을 캡처해 두시면 상담 시 참고 자료로 활용하실 수 있습니다.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2>진단 결과가 고민된다면.</h2>
+  <p>결과 화면과 함께 상담을 신청하세요. 다음 스텝을 함께 정리해 드립니다.</p>
+  <a href="contact.html" class="btn btn-primary btn-lg">상담 신청하기</a>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">ONNIVERSE<span class="dot">.</span></div>
+      <p>Online Seller's Universe.<br>온라인 셀러의 성장을 우연에 맡기지 않습니다.</p>
+    </div>
+    <div class="footer-col">
+      <h5>솔루션</h5>
+      <ul>
+        <li><a href="consulting.html">컨설팅</a></li>
+        <li><a href="marketing-audit.html">마케팅 점검</a></li>
+        <li><a href="solution-dev.html">솔루션 개발</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>온니버스</h5>
+      <ul>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="preview.html">컨설팅 맛보기</a></li>
+        <li><a href="references.html">레퍼런스</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>문의</h5>
+      <ul>
+        <li><a href="contact.html">상담 신청</a></li>
+        <li><a href="mailto:onniverse.official@gmail.com">onniverse.official@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Onniverse. All rights reserved.</span>
+    <span>온라인 셀러의 모든 궤도, 온니버스</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+// 셀프 진단 퀴즈 — 타겟별 분기형
+(function () {
+  const DATA = {
+    startup: {
+      questions: [
+        '팔려는 아이템의 원가·수수료·광고비를 뺀 실마진율을 숫자로 말할 수 있다.',
+        '경쟁 상품 10개 이상의 가격·리뷰·판매량을 직접 조사해 봤다.',
+        '"누가, 왜 우리 것을 사야 하는가"에 대한 답이 한 문장으로 있다.',
+        '첫 판매 채널(스마트스토어·자사몰·오픈마켓)을 데이터 근거로 정했다.',
+        '초기 3개월 운영 자금과 광고 예산을 분리해서 잡아뒀다.',
+        '사입·제작·위탁 중 무엇으로 시작할지 공급 방식을 확정했다.',
+        '본격 런칭 전에 소액으로 수요를 검증할 방법을 갖고 있다.',
+        '상세페이지에서 강조할 핵심 소구점이 정리되어 있다.',
+        '사업자등록·통신판매업 신고 등 행정 절차를 파악하고 있다.',
+        '실패로 판단할 손절 기준(기간·금액)을 미리 정해뒀다.'
+      ],
+      tiers: [
+        {
+          max: 3, name: '🌑 아이디어 궤도',
+          desc: '아이템은 있지만 검증은 아직입니다. 지금 그대로 런칭하면 시행착오 비용을 수업료로 내게 됩니다. 열정보다 숫자 검증이 먼저입니다.',
+          reco: ['컨설팅 창업 트랙 — 아이템 검증과 마진 구조 설계부터', '경쟁·수요 조사의 기준 데이터 만들기'],
+          link: 'consulting.html', linkLabel: '창업 트랙 알아보기'
+        },
+        {
+          max: 7, name: '🌒 발사 준비 궤도',
+          desc: '방향은 잡혔지만 몇 가지 핵심 검증이 비어 있습니다. 지금 비어 있는 항목이 런칭 후 가장 비싼 문제로 돌아옵니다.',
+          reco: ['컨설팅 창업 트랙 — 비어 있는 검증 항목 집중 보완', '소액 수요 테스트로 런칭 리스크 줄이기'],
+          link: 'consulting.html', linkLabel: '창업 트랙 알아보기'
+        },
+        {
+          max: 10, name: '🚀 카운트다운',
+          desc: '발사 준비가 거의 끝났습니다. 이제 실행 순서와 초기 광고 구조를 잡고, 런칭 후 첫 90일 계획을 세우면 됩니다.',
+          reco: ['컨설팅 창업 트랙(단건 진단) — 런칭 플랜 최종 점검', '런칭 후 첫 90일 성장 로드맵 설계'],
+          link: 'consulting.html', linkLabel: '창업 트랙 알아보기'
+        }
+      ]
+    },
+    growth: {
+      questions: [
+        '이번 달 ROAS와 지난달 ROAS를 지금 바로 말할 수 있다.',
+        '신규 고객 1명을 데려오는 데 드는 비용(CAC)을 알고 있다.',
+        '상세페이지 전환율이 몇 %인지, 업계 평균 대비 어느 수준인지 안다.',
+        '광고 소재를 주기적으로 테스트하고, 성과 기준으로 교체한다.',
+        '전체 매출에서 유료 광고에 의존하는 비중이 70% 미만이다.',
+        '재구매율을 추적하고 있고, 높이기 위한 활동을 하고 있다.',
+        '상품별 실마진을 기준으로 광고 예산을 배분한다.',
+        '매출이 정체되면 원인을 데이터로 좁혀낼 수 있다.',
+        '기획전·프로모션 성과를 전후 수치로 검증한다.',
+        '반복 운영 업무(재고·발주·정산)에 자동화 도구를 쓰고 있다.'
+      ],
+      tiers: [
+        {
+          max: 3, name: '🌑 진입 궤도',
+          desc: '매출이 구조가 아니라 감에 의존하고 있는 단계입니다. 지금 필요한 건 광고 증액이 아니라 기본 설계입니다. 방향만 잡혀도 성장 속도가 달라집니다.',
+          reco: ['컨설팅 성장 트랙 — 상품·트래픽·전환 기본 구조부터 설계', '핵심 지표(ROAS·전환율·마진)의 기준 데이터 만들기'],
+          link: 'consulting.html', linkLabel: '성장 트랙 알아보기'
+        },
+        {
+          max: 7, name: '🌗 안정 궤도',
+          desc: '기본기는 갖춰졌지만 어딘가에서 효율이 새고 있을 가능성이 큽니다. 이 단계에서는 전면 개편보다 정확한 진단이 먼저입니다.',
+          reco: ['마케팅 점검 — 광고 계정과 유입 구조 진단 리포트', '전환율·채널 믹스에서 새는 비용 찾기'],
+          link: 'marketing-audit.html', linkLabel: '마케팅 점검 알아보기'
+        },
+        {
+          max: 10, name: '🌕 성장 궤도',
+          desc: '데이터 기반 운영이 자리 잡았습니다. 이제 반복 업무를 시스템에 넘기고, 상위 1%를 향한 다음 단계를 준비할 차례입니다.',
+          reco: ['솔루션 개발 — 반복 업무 자동화로 대표의 시간 확보', '1% 트랙 — 시스템 경영으로 넘어가는 준비'],
+          link: 'solution-dev.html', linkLabel: '솔루션 개발 알아보기'
+        }
+      ]
+    },
+    elite: {
+      questions: [
+        '대표가 일주일 자리를 비워도 매출과 운영에 문제가 없다.',
+        '핵심 운영 노하우가 직원 머릿속이 아니라 문서와 시스템에 있다.',
+        'SKU별 공헌이익을 기준으로 상품 포트폴리오를 관리한다.',
+        '신규 채널(글로벌·B2B·오프라인 등) 확장을 테스트해 본 적이 있다.',
+        '브랜드 검색량 같은 브랜드 지표를 정기적으로 추적한다.',
+        '광고 없이 발생하는 자연 매출 비중이 30% 이상이다.',
+        '채용·위임 기준과 온보딩 프로세스가 문서로 존재한다.',
+        '월 단위 P&L(손익계산서)을 보고 의사결정한다.',
+        '고객 LTV를 알고, LTV 기준으로 마케팅 예산 상한을 정한다.',
+        '3년 뒤 확장 또는 엑싯 시나리오가 구체적으로 있다.'
+      ],
+      tiers: [
+        {
+          max: 3, name: '🌕 매출은 상위권, 구조는 아직',
+          desc: '매출은 상위 10%지만, 대표가 곧 시스템인 상태입니다. 지금 구조로 확장하면 매출이 아니라 과로가 늘어납니다. 시스템 경영으로의 전환이 최우선입니다.',
+          reco: ['1% 트랙 — 대표 없이도 돌아가는 조직·운영 설계부터', '핵심 노하우 문서화와 위임 구조 만들기'],
+          link: 'consulting.html', linkLabel: '1% 트랙 알아보기'
+        },
+        {
+          max: 7, name: '🌖 확장 궤도',
+          desc: '기반은 탄탄합니다. 이제 승부처는 무엇을 확장하고 무엇을 버릴지의 우선순위입니다. 공헌이익과 LTV가 그 답을 알고 있습니다.',
+          reco: ['1% 트랙 — 공헌이익 기반 상품·채널 확장 전략', '브랜드 자산화로 광고 의존도 낮추기'],
+          link: 'consulting.html', linkLabel: '1% 트랙 알아보기'
+        },
+        {
+          max: 10, name: '🌟 1% 궤도 진입',
+          desc: '상위 1%의 구조를 거의 갖췄습니다. 이 단계에서는 남은 간극이 디테일과 시야에 있습니다. 같은 고민을 먼저 통과한 플레이북이 시간을 크게 아껴줍니다.',
+          reco: ['1% 트랙 — 온니버스 전체 플레이북으로 마지막 간극 좁히기', '3년 확장·엑싯 시나리오 구체화'],
+          link: 'consulting.html', linkLabel: '1% 트랙 알아보기'
+        }
+      ]
+    }
+  };
+
+  let aud = null;
+  let idx = 0;
+  const answers = [];
+
+  const audStage = document.getElementById('quiz-audience');
+  const stage = document.getElementById('quiz-stage');
+  const result = document.getElementById('quiz-result');
+  const bar = document.getElementById('quiz-bar');
+  const stepEl = document.getElementById('quiz-step');
+  const qEl = document.getElementById('quiz-q');
+  const backBtn = document.getElementById('quiz-back');
+
+  function questions() { return DATA[aud].questions; }
+
+  function render() {
+    stepEl.textContent = 'Q' + (idx + 1) + ' / ' + questions().length;
+    qEl.textContent = questions()[idx];
+    bar.style.width = (idx / questions().length) * 100 + '%';
+    backBtn.style.visibility = 'visible';
+    backBtn.textContent = idx > 0 ? '‹ 이전 문항으로' : '‹ 단계 다시 선택하기';
+  }
+
+  function goAudience() {
+    aud = null;
+    idx = 0;
+    answers.length = 0;
+    stage.style.display = 'none';
+    result.style.display = 'none';
+    audStage.style.display = 'block';
+    document.getElementById('result-circle').style.strokeDashoffset = 377;
+  }
+
+  function answer(yes) {
+    answers[idx] = yes ? 1 : 0;
+    if (idx < questions().length - 1) {
+      idx++;
+      render();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    const score = answers.reduce((a, b) => a + b, 0);
+    const pct = score * 10;
+    const tier = DATA[aud].tiers.find((t) => score <= t.max);
+
+    stage.style.display = 'none';
+    result.style.display = 'block';
+
+    document.getElementById('result-score').textContent = pct;
+    document.getElementById('result-tier').textContent = tier.name;
+    document.getElementById('result-desc').textContent = tier.desc;
+
+    const list = document.getElementById('result-reco-list');
+    list.innerHTML = '';
+    tier.reco.forEach((r) => {
+      const li = document.createElement('li');
+      li.textContent = r;
+      list.appendChild(li);
+    });
+
+    const cta = document.getElementById('result-cta-btn');
+    cta.textContent = tier.linkLabel;
+    cta.href = tier.link;
+
+    // ring: r=60 → circumference ≈ 377
+    requestAnimationFrame(() => {
+      document.getElementById('result-circle').style.strokeDashoffset = 377 - (377 * pct) / 100;
+    });
+  }
+
+  document.querySelectorAll('.audience-options button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      aud = btn.dataset.aud;
+      idx = 0;
+      answers.length = 0;
+      audStage.style.display = 'none';
+      stage.style.display = 'block';
+      render();
+    });
+  });
+
+  document.getElementById('quiz-yes').addEventListener('click', () => answer(true));
+  document.getElementById('quiz-no').addEventListener('click', () => answer(false));
+  backBtn.addEventListener('click', () => {
+    if (idx > 0) { idx--; render(); } else { goAudience(); }
+  });
+  document.getElementById('quiz-restart').addEventListener('click', goAudience);
+})();
+</script>
+</body>
+</html>
