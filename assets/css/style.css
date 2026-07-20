@@ -14,6 +14,8 @@
   --text-on-dark-secondary: #a1a1a6;
   --accent: #0071e3;
   --accent-hover: #0077ed;
+  --accent-deep: #005fb8;
+  --accent-bright: #2997ff;
   --border: #d2d2d7;
   --border-dark: #333336;
   --radius-lg: 22px;
@@ -38,6 +40,8 @@ body {
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
   overflow-x: hidden;
 }
 
@@ -111,6 +115,8 @@ button { font-family: inherit; }
 }
 
 .nav-link:hover { opacity: 1; }
+.nav-link.active { opacity: 1; font-weight: 600; }
+.nav-mobile-only { display: none; }
 
 .nav-menu > li.has-dropdown:hover .dropdown {
   opacity: 1;
@@ -163,6 +169,9 @@ button { font-family: inherit; }
 /* Mobile nav */
 @media (max-width: 834px) {
   .nav-toggle { display: block; }
+  .nav-cta { gap: 10px; }
+  .nav-cta .btn-ghost { display: none; }
+  .nav-mobile-only { display: block; }
   .nav-menu {
     position: fixed;
     top: var(--nav-height);
@@ -211,7 +220,7 @@ button { font-family: inherit; }
 .hero-eyebrow {
   font-size: 15px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-deep);
   margin-bottom: 14px;
 }
 
@@ -253,6 +262,34 @@ button { font-family: inherit; }
   position: relative;
 }
 
+.hero-note, .cta-note {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 16px;
+}
+.cta-note { color: var(--text-on-dark-secondary); }
+
+/* 월 10억 증거 밴드 */
+.proof-band { text-align: center; }
+.proof-band .proof-num {
+  font-size: clamp(56px, 9vw, 96px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--accent-bright);
+  line-height: 1;
+}
+.proof-band .proof-label {
+  font-size: 17px;
+  color: var(--text-on-dark);
+  margin-top: 14px;
+  font-weight: 600;
+}
+.proof-band .proof-note {
+  font-size: 13px;
+  color: var(--text-on-dark-secondary);
+  margin-top: 10px;
+}
+
 /* ---------- Buttons ---------- */
 
 .btn {
@@ -265,6 +302,7 @@ button { font-family: inherit; }
   font-weight: 400;
   cursor: pointer;
   border: 1px solid transparent;
+  white-space: nowrap;
   transition: all 0.2s var(--ease);
 }
 
@@ -313,6 +351,7 @@ section { position: relative; }
   color: var(--text-on-dark);
 }
 .section-dark .text-secondary { color: var(--text-on-dark-secondary); }
+.section-dark .section-eyebrow, .cta-banner .section-eyebrow { color: var(--accent-bright); }
 
 .section-gray { background: var(--bg-secondary); }
 
@@ -325,7 +364,7 @@ section { position: relative; }
 .section-eyebrow {
   font-size: 14px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-deep);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 12px;
@@ -444,10 +483,10 @@ section { position: relative; }
 .step .step-num {
   font-size: 15px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-deep);
   margin-bottom: 14px;
 }
-.step h4 {
+.step h3 {
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 8px;
@@ -499,7 +538,7 @@ table.compare th { color: var(--text-secondary); font-weight: 500; font-size: 13
 .footer-brand .nav-logo { margin-bottom: 10px; }
 .footer-brand p { max-width: 260px; line-height: 1.6; }
 
-.footer-col h5 {
+.footer-col h3 {
   font-size: 13px;
   color: var(--text);
   font-weight: 600;
@@ -718,10 +757,10 @@ table.compare th { color: var(--text-secondary); font-weight: 500; font-size: 13
 .ref-tag {
   font-size: 12px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-deep);
   margin-bottom: 8px;
 }
-.ref-body h4 { font-size: 18px; margin: 0 0 8px; font-weight: 600; }
+.ref-body h3 { font-size: 18px; margin: 0 0 8px; font-weight: 600; }
 .ref-body p { font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.5; }
 .ref-result {
   margin-top: 14px;
@@ -1011,7 +1050,7 @@ table.compare th { color: var(--text-secondary); font-weight: 500; font-size: 13
   text-align: left;
   margin-bottom: 28px;
 }
-.result-reco h5 {
+.result-reco h3 {
   font-size: 13px;
   font-weight: 700;
   color: var(--accent);
